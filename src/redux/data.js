@@ -1,28 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const counterSlice = createSlice({
+export const apiSlice = createSlice({
   name: "datajson",
   initialState: {
     value: [],
+    seachvalue: [],
+    searchletters: "",
   },
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
+    update: (state, action) => {
+      state.value = [action.payload];
     },
-    decrement: (state) => {
-      state.value -= 1;
+    adddata: (state, action) => {
+      state.seachvalue = [action.payload];
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    searchdata: (state, action) => {
+      state.searchletters = [action.payload];
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { update, adddata, searchdata } = apiSlice.actions;
 
-export default counterSlice.reducer;
+export default apiSlice.reducer;
